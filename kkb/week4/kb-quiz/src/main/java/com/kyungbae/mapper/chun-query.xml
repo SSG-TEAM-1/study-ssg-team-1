@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="AvgStudentPointByClass">
+        SELECT
+            student_no
+            , student_name
+            , ROUND(AVG(point), 1) AS point
+        FROM
+            tb_student
+            JOIN tb_department USING(department_no)
+            JOIN tb_grade USING(student_no)
+        WHERE
+            department_name = ?
+        GROUP BY
+            student_no
+        ORDER BY
+            student_no
+    </entry>
+
+    <entry key="selectDepartmentName">
+        SELECT
+            DEPARTMENT_NAME
+        FROM
+            tb_department
+    </entry>
+</properties>
